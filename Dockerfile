@@ -11,4 +11,4 @@ RUN chmod a+x /root/certbot-auto
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
-ENTRYPOINT ["sleep 86400"]
+CMD sleep 86400
