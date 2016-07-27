@@ -3,7 +3,7 @@ FROM nginx
 ENV TERM xterm
 
 # install certbot and cron
-RUN apt-get update && apt-get install -qy nano wget cron nginx
+RUN apt-get update && apt-get install -qy nano wget cron nginx supervisor
 RUN cd /root/ && wget https://dl.eff.org/certbot-auto
 RUN chmod a+x /root/certbot-auto
 RUN yes | /root/certbot-auto; exit 0
@@ -21,3 +21,12 @@ RUN echo "@midnight /root/renew.sh >> /home/keys/renewSh.txt" | crontab
 # copy configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
+
+
+ADD run-cron.sh run-nginx.sh /usr/bin/
+RUN chmod +x /usr/bin/run-cron.sh /usr/bin/run-nginx.sh
+
+# Supervisor config
+ADD cron.conf nginx-server.conf /etc/supervisor/conf.d/
+
+CMD ["supervisord", "-n"]
