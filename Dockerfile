@@ -1,4 +1,4 @@
-FROM debian
+FROM nginx
 
 ENV TERM xterm
 
@@ -16,7 +16,7 @@ COPY renew.sh /root/renew.sh
 RUN chmod +x /root/renew.sh
 
 #add renew job that runs every day
-RUN echo "@midnight /root/renew.sh >> /home/keys/renewSh.txt" 
+RUN echo "@midnight /root/renew.sh >> /home/keys/renewSh.txt" | crontab
 
 # copy configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
