@@ -27,6 +27,6 @@ ADD run-nginx.sh /usr/bin/
 RUN chmod +x /usr/bin/run-nginx.sh
 
 # Supervisor config
-ADD nginx-server.conf /etc/supervisor/conf.d/
+ADD cron.conf nginx-server.conf /etc/supervisor/conf.d/
 
 CMD ["supervisord", "-n"]
