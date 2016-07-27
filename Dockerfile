@@ -6,9 +6,10 @@ ENV TERM xterm
 RUN apt-get update && apt-get install -qy nano wget
 RUN cd /root/ && wget https://dl.eff.org/certbot-auto
 RUN chmod a+x /root/certbot-auto
+RUN /root/certbot-auto -y
 
 # generate a strong Diffie-Hellman group
-openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
 # copy configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
