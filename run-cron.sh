@@ -1,4 +1,4 @@
 #!/bin/bash
 
 #start cron job
-cron
+cron && exit 0
