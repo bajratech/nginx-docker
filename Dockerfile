@@ -23,10 +23,10 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 
-ADD run-cron.sh run-nginx.sh /usr/bin/
-RUN chmod +x /usr/bin/run-cron.sh /usr/bin/run-nginx.sh
+ADD run-nginx.sh /usr/bin/
+RUN chmod +x /usr/bin/run-nginx.sh
 
 # Supervisor config
-ADD cron.conf nginx-server.conf /etc/supervisor/conf.d/
+ADD nginx-server.conf /etc/supervisor/conf.d/
 
 CMD ["supervisord", "-n"]
