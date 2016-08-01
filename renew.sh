@@ -1,6 +1,7 @@
 #!/bin/bash
-
-/root/certbot-auto renew > /home/keys/renew.txt
+> /home/keys/renew.txt
+date >> /home/keys/renew.txt
+/root/certbot-auto renew >> /home/keys/renew.txt
 count=`cat /home/keys/renew.txt | grep -c "No renewals were attempted"`
 if [ $count -ne 0 ]; then
      echo "No renewals were attempted." && exit 0
