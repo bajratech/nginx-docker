@@ -37,8 +37,8 @@ if [ ! -d "$SSL_CERT_HOME" ]; then
   mkdir -p $SSL_CERT_HOME
   chmod 755 $SSL_ROOT
   chmod -R 700 $SSL_ROOT/certs
-  #cd $SSL_CERT_HOME
-  #create_pems
+  cd $SSL_CERT_HOME
+  create_pems
   cd $SSL_ROOT
   setup_letsencrypt
 
