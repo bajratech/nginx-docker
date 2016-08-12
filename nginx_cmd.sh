@@ -2,6 +2,7 @@
 
 # initialize the letsencrypt.sh environment
 setup_letsencrypt() {
+  echo "Started letsencrypt procedure"
   
   # create the directory that will serve ACME challenges
   mkdir -p .well-known/acme-challenge
@@ -19,6 +20,8 @@ setup_letsencrypt() {
   # fetch stable version of letsencrypt.sh
   curl "https://raw.githubusercontent.com/lukas2511/letsencrypt.sh/v0.2.0/letsencrypt.sh" > letsencrypt.sh
   chmod 755 letsencrypt.sh
+
+  echo "Finished letsencrypt procedure"
 }
  
 # creates self-signed SSL files
@@ -52,7 +55,7 @@ if [ "$CA_SSL" = "true" ]; then
   ./letsencrypt.sh --cron
  
   # copy the fresh certs to where Nginx expects to find them
-  cp $SSL_ROOT/certs/example.com/fullchain.pem $SSL_ROOT/certs/example.com/privkey.pem $SSL_CERT_HOME
+  cp $SSL_ROOT/certs/beta.sitegranny.com/fullchain.pem $SSL_ROOT/certs/beta.sitegranny.com/privkey.pem $SSL_CERT_HOME
  
   # pull Nginx out of daemon mode
   nginx -s stop
