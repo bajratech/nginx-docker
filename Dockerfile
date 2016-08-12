@@ -14,8 +14,8 @@ ENV SSL_CERT_HOME $SSL_ROOT/certs/live
 ENV CA_SSL true
 
 #copy letsencrypt
-COPY letsencrypt.sh /home/keys/letsencrypt/
-RUN chmod +x /home/keys/letsencrypt/letsencrypt.sh
+COPY letsencrypt.sh /var/www/letsencrypt/
+RUN chmod +x /var/www/letsencrypt/letsencrypt.sh
 
 # generate a strong Diffie-Hellman group
 # RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
