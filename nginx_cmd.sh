@@ -47,7 +47,7 @@ fi
 # if we are configured to run SSL with a real certificate authority run letsencrypt.sh to retrieve/renew SSL certs
 if [ "$CA_SSL" = "true" ]; then
 
-  cp letsencrypt.sh /home/keys/letsencrypt/
+  cp /var/www/letsencrypt/letsencrypt.sh /home/keys/letsencrypt/
   chmod +x /home/keys/letsencrypt/letsencrypt.sh
   # Nginx must be running for challenges to proceed
   # run in daemon mode so our script can continue
