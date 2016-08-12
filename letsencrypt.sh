@@ -111,12 +111,12 @@ load_config() {
   CHALLENGETYPE="http-01"
   CONFIG_D=
   DOMAINS_D=
-  DOMAINS_TXT="/home/keys/letsencrypt/domains.txt"
+  DOMAINS_TXT="/var/www/letsencrypt/domains.txt"
   HOOK=
   HOOK_CHAIN="no"
   RENEW_DAYS="30"
   KEYSIZE="4096"
-  WELLKNOWN="/home/keys/letsencrypt/.well-known/acme-challenge"
+  WELLKNOWN="/var/www/letsencrypt/.well-known/acme-challenge"
   PRIVATE_KEY_RENEW="yes"
   KEY_ALGO=rsa
   OPENSSL_CNF="$(openssl version -d | cut -d\" -f2)/openssl.cnf"
@@ -181,7 +181,7 @@ load_config() {
 
   [[ -z "${CERTDIR}" ]] && CERTDIR="${BASEDIR}/certs"
   [[ -z "${DOMAINS_TXT}" ]] && DOMAINS_TXT="${BASEDIR}/domains.txt"
-  [[ -z "${WELLKNOWN}" ]] && WELLKNOWN="/home/keys/letsencrypt"
+  [[ -z "${WELLKNOWN}" ]] && WELLKNOWN="/var/www/letsencrypt"
   [[ -z "${LOCKFILE}" ]] && LOCKFILE="${BASEDIR}/lock"
   [[ -n "${PARAM_NO_LOCK:-}" ]] && LOCKFILE=""
 
