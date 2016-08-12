@@ -104,19 +104,19 @@ load_config() {
   fi
 
   # Default values
-  CA="https://acme-v01.api.letsencrypt.org/directory"
+  CA="https://acme-staging.api.letsencrypt.org/directory"
   LICENSE="https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf"
   CERTDIR=
   ACCOUNTDIR=
   CHALLENGETYPE="http-01"
   CONFIG_D=
   DOMAINS_D=
-  DOMAINS_TXT=
+  DOMAINS_TXT="beta.sitegranny.com"
   HOOK=
   HOOK_CHAIN="no"
   RENEW_DAYS="30"
   KEYSIZE="4096"
-  WELLKNOWN=
+  WELLKNOWN="/var/www/letsencrypt/.well-known/acme-challenge"
   PRIVATE_KEY_RENEW="yes"
   KEY_ALGO=rsa
   OPENSSL_CNF="$(openssl version -d | cut -d\" -f2)/openssl.cnf"
