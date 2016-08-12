@@ -43,6 +43,7 @@ if [ ! -d "$SSL_CERT_HOME" ]; then
   chmod -R 700 $SSL_ROOT/certs
   cd $SSL_CERT_HOME
   create_pems
+  copy_dummy_pems
   cd $SSL_ROOT
   setup_letsencrypt
 
