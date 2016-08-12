@@ -2,31 +2,20 @@ FROM nginx
 
 ENV TERM xterm
 
-# install certbot and cron
-RUN apt-get update && apt-get install -qy nano wget cron nginx supervisor
-RUN cd /root/ && wget https://dl.eff.org/certbot-auto
-RUN chmod a+x /root/certbot-auto
-RUN yes | /root/certbot-auto; exit 0
+# install essential Linux packages
+RUN apt-get update -qq && apt-get -y install apache2-utils curl
 
-# generate a strong Diffie-Hellman group
-RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
-
-#add renew script
-COPY renew.sh /root/renew.sh
-RUN chmod +x /root/renew.sh
-
-#add renew job that runs every day
-RUN echo "@midnight /root/renew.sh >> /home/keys/renewSh.txt" | crontab
+# where we store everything SSL-related
+ENV SSL_ROOT /var/www/ssl
+ 
+# where Nginx looks for SSL files
+ENV SSL_CERT_HOME $SSL_ROOT/certs/live
+ 
+# copy over the script that is run by the container
+COPY nginx_cmd.sh /tmp/
 
 # copy configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
-
-ADD run-nginx.sh /usr/bin/
-RUN chmod +x /usr/bin/run-nginx.sh
-
-# Supervisor config
-ADD nginx-server.conf /etc/supervisor/conf.d/
-
-CMD ["supervisord", "-n"]
+CMD [ "/tmp/nginx_cmd.sh" ]
