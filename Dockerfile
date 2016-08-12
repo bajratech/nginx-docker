@@ -12,8 +12,8 @@ ENV SSL_ROOT /var/www/letsencrypt
 ENV SSL_CERT_HOME $SSL_ROOT/certs/live
 
 #copy letsencrypt
-COPY letsencrypt.sh $SSL_ROOT
-RUN chmod +x $SSL_ROOT/letsencrypt.sh
+COPY letsencrypt.sh /var/www/letsencrypt/
+RUN chmod +x /var/www/letsencrypt/letsencrypt.sh
  
 # copy over the script that is run by the container
 COPY nginx_cmd.sh /tmp/
