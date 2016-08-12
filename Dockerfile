@@ -6,7 +6,7 @@ ENV TERM xterm
 RUN apt-get update -qq && apt-get -y install apache2-utils curl
 
 # where we store everything SSL-related
-ENV SSL_ROOT /var/www/letsencrypt
+ENV SSL_ROOT /home/keys/letsencrypt
  
 # where Nginx looks for SSL files
 ENV SSL_CERT_HOME $SSL_ROOT/certs/live

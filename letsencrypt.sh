@@ -111,12 +111,12 @@ load_config() {
   CHALLENGETYPE="http-01"
   CONFIG_D=
   DOMAINS_D=
-  DOMAINS_TXT="beta.sitegranny.com"
+  DOMAINS_TXT="/home/keys/letsencrypt/domains.txt"
   HOOK=
   HOOK_CHAIN="no"
   RENEW_DAYS="30"
   KEYSIZE="4096"
-  WELLKNOWN="/var/www/letsencrypt/.well-known/acme-challenge"
+  WELLKNOWN="/home/keys/letsencrypt/.well-known/acme-challenge"
   PRIVATE_KEY_RENEW="yes"
   KEY_ALGO=rsa
   OPENSSL_CNF="$(openssl version -d | cut -d\" -f2)/openssl.cnf"
