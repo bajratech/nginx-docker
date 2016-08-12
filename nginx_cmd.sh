@@ -8,7 +8,7 @@ setup_letsencrypt() {
   chmod -R 755 .well-known
  
   # See https://github.com/lukas2511/letsencrypt.sh/blob/master/docs/domains_txt.md
-  echo "example.com www.example.com" > domains.txt
+  echo "beta.sitegranny.com" > domains.txt
  
   # See https://github.com/lukas2511/letsencrypt.sh/blob/master/docs/staging.md
   echo "CA=\"https://acme-staging.api.letsencrypt.org/directory\"" > config.sh
