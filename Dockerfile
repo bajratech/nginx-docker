@@ -13,6 +13,7 @@ ENV SSL_CERT_HOME $SSL_ROOT/certs/live
  
 # copy over the script that is run by the container
 COPY nginx_cmd.sh /tmp/
+RUN chmod +x /tmp/nginx_cmd.sh
 
 # copy configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
