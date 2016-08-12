@@ -16,7 +16,7 @@ COPY letsencrypt.sh /var/www/letsencrypt/
 RUN chmod +x /var/www/letsencrypt/letsencrypt.sh
 
 # generate a strong Diffie-Hellman group
-RUN openssl dhparam -out /var/www/letsencrypt/certs/live/dhparam.pem 2048
+RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
  
 # copy over the script that is run by the container
 COPY nginx_cmd.sh /tmp/
