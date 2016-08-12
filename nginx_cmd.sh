@@ -31,6 +31,10 @@ create_pems() {
   openssl dhparam -out dhparam.pem 2048
   chmod 600 *.pem
 }
+
+copy_dummy_pems() {
+  cp $SSL_CERT_HOME/dhparam.pem $SSL_CERT_HOME/fullchain.pem $$SSL_CERT_HOME/privkey.pem /home/keys/letsencrypt/certs/live/
+}
  
 # if we have not already done so initialize Docker volume to hold SSL files
 if [ ! -d "$SSL_CERT_HOME" ]; then
@@ -52,10 +56,11 @@ if [ "$CA_SSL" = "true" ]; then
   nginx
  
   # retrieve/renew SSL certs
-  /var/www/letsencrypt/letsencrypt.sh --cron
+  ./letsencrypt.sh --cron
  
   # copy the fresh certs to where Nginx expects to find them
   cp $SSL_ROOT/certs/beta.sitegranny.com/fullchain.pem $SSL_ROOT/certs/beta.sitegranny.com/privkey.pem /home/keys/letsencrypt/certs/live/
+  cp $SSL_CERT_HOME/dhparam.pem /home/keys/letsencrypt/certs/live/
  
   # pull Nginx out of daemon mode
   nginx -s stop
