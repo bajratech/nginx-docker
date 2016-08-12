@@ -54,7 +54,7 @@ if [ "$CA_SSL" = "true" ]; then
   nginx
  
   # retrieve/renew SSL certs
-  ./letsencrypt.sh --cron
+  /home/keys/letsencrypt/letsencrypt.sh --cron
  
   # copy the fresh certs to where Nginx expects to find them
   cp $SSL_ROOT/certs/beta.sitegranny.com/fullchain.pem $SSL_ROOT/certs/beta.sitegranny.com/privkey.pem $SSL_CERT_HOME
