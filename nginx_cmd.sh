@@ -3,7 +3,7 @@
 # initialize the letsencrypt.sh environment
 setup_letsencrypt() {
   echo "Started letsencrypt procedure"
-  
+
   # create the directory that will serve ACME challenges
   mkdir -p .well-known/acme-challenge
   chmod -R 755 .well-known
@@ -18,8 +18,8 @@ setup_letsencrypt() {
   echo "WELLKNOWN=\"$SSL_ROOT/.well-known/acme-challenge\"" >> config.sh
  
   # fetch stable version of letsencrypt.sh
-  curl "https://raw.githubusercontent.com/lukas2511/letsencrypt.sh/master/letsencrypt.sh" > letsencrypt.sh
-  chmod 755 letsencrypt.sh
+  #curl "https://raw.githubusercontent.com/lukas2511/letsencrypt.sh/master/letsencrypt.sh" > letsencrypt.sh
+  #chmod 755 letsencrypt.sh
 
   echo "Finished letsencrypt procedure"
 }
