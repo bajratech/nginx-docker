@@ -181,7 +181,7 @@ load_config() {
 
   [[ -z "${CERTDIR}" ]] && CERTDIR="${BASEDIR}/certs"
   [[ -z "${DOMAINS_TXT}" ]] && DOMAINS_TXT="${BASEDIR}/domains.txt"
-  [[ -z "${WELLKNOWN}" ]] && WELLKNOWN="/var/www/letsencrypt"
+  [[ -z "${WELLKNOWN}" ]] && WELLKNOWN="/home/keys/letsencrypt"
   [[ -z "${LOCKFILE}" ]] && LOCKFILE="${BASEDIR}/lock"
   [[ -n "${PARAM_NO_LOCK:-}" ]] && LOCKFILE=""
 
