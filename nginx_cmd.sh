@@ -38,6 +38,7 @@ if [ ! -d "$SSL_CERT_HOME" ]; then
   create_pems
   cd $SSL_ROOT
   setup_letsencrypt
+
 fi
  
 # if we are configured to run SSL with a real certificate authority run letsencrypt.sh to retrieve/renew SSL certs
@@ -58,4 +59,5 @@ if [ "$CA_SSL" = "true" ]; then
 fi
  
 # start Nginx in foreground so Docker container doesn't exit
+echo "Running nginx"
 nginx -g "daemon off;"
